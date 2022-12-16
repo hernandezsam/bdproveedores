@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="row">
 
+<div class="container">
+    
         <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
+            <div class="form-group">
+                
                     <form action="/add" method="post">
                         <div class="form-group">
                             <input class="form-control" type="text" name="rut" placeholder="RUT" required>
@@ -22,21 +22,30 @@
                             <input class="form-control" type="text" name="banco" placeholder="Banco" required>
                         </div>
                         <div class="form-group">
+                            <input class="form-control" type="text" name="tipo_cta" placeholder="Tipo" required>
+                        </div>
+                        <div class="form-group">
                             <input class="form-control" type="text" name="num_cta" placeholder="Numero de Cuenta" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="email" placeholder="Correo Electronico" required>
+                            <input class="form-control" type="text" name="email" placeholder="Correo Electronico">
                         </div>
                         <button class="btn btn-primary" type="submit">
-                            Add
+                            Agregar
                         </button>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="col-md-6">
-            <table class="table table-bordered table-hover">
+<h1 style="text-align:center;">Cuentas Bancarias Proveedores</h1>
+<div class="container">
+    <div class="col-md-6">
+        <div>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar por RUT..">
+            <table class="table table-bordered table-hover" id="myTable">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -44,6 +53,7 @@
                     <th>Razon Social</th>
                     <th>Cod. Banco</th>
                     <th>Banco</th>
+                    <th>Tipo</th>
                     <th>Numero de Cuenta</th>
                     <th>Correo Electronico</th>
                     <th>Operaciones</th>
@@ -57,23 +67,23 @@
                     <td>{{ entry.razon_social }}</td>
                     <td>{{ entry.cod_banco }}</td>
                     <td>{{ entry.banco }}</td>
+                    <td>{{ entry.tipo_cta }}</td>
                     <td>{{ entry.num_cta }}</td>
                     <td>{{ entry.email }}</td>
                     <td>
-                        <a class="{{ 'btn btn-success' if entry.status else 'btn btn-dark'}}"
-                           href="/turn/{{ entry.id }}">
-                            Turn Status
-                        </a>
                         <a class="btn btn-danger"
                            href="/delete/{{ entry.id }}">
-                            Delete
+                            Eliminar
                         </a>
                         <a class="btn btn-info"
                            href="/update/{{ entry.id }}">
-                            Edit
+                            Editar
                         </a>
                     </td>
                 </tr>
+        </div>    
+    </div>
+</div>
                 {% endfor %}
                 </tbody>
 

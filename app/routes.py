@@ -32,10 +32,11 @@ def add():
         razon_social = form.get('razon_social')
         cod_banco = form.get('cod_banco')
         banco = form.get('banco')
+        tipo_cta = form.get('tipo_cta')
         num_cta = form.get('num_cta')
         email = form.get('email')
         if not rut or razon_social or cod_banco or banco or num_cta or email :
-            entry = Entry(rut = rut, razon_social = razon_social , cod_banco = cod_banco , banco = banco , num_cta = num_cta , email = email)
+            entry = Entry(rut = rut, razon_social = razon_social , cod_banco = cod_banco , banco = banco , tipo_cta = tipo_cta, num_cta = num_cta , email = email)
             db.session.add(entry)
             db.session.commit()
             return redirect('/')
@@ -64,6 +65,8 @@ def update(id):
             entry.cod_banco = cod_banco
             banco = form.get('banco')
             entry.banco = banco
+            tipo_cta = form.get('tipo_cta')
+            entry.tipo_cta = tipo_cta
             num_cta = form.get('num_cta')
             entry.num_cta = num_cta
             email = form.get('email')
